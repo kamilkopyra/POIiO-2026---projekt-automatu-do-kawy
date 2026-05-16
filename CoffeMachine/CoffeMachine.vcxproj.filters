@@ -42,4 +42,7 @@
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="coffemachine.db" />
+  </ItemGroup>
 </Project>

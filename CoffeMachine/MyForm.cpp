@@ -6,79 +6,31 @@ using namespace System::Windows::Forms;
 [STAThreadAttribute]
 
 int main(array<String^>^ args) {
-    //Application::EnableVisualStyles();
-    //Application::SetCompatibleTextRenderingDefault(false);
-    //MyForm form;
-    //Application::Run(% form);
-	
-    std::cout << "Terminalowa wersja testowa\n\n";
-   
-    CoffeMachine machine;
-	machine.initializeMachine();
-	machine.printStatus();
+    String^ connectionString = "Data Source=coffemachine.db;Version=3;";
 
-	//machine.makeCoffee(Tdrinks::drinks[2]);  można tak ale trochę słabe dlatego dodałem szukanie po nazwie
-    
-    
+    try
+    {
+        SQLiteConnection connection(connectionString);
+        connection.Open();
 
-    machine.makeCoffee("Espresso");
-    machine.printStatus();
-    
-	machine.makeCoffee("Latte");
-    machine.printStatus();
+        Console::WriteLine("Polaczono z baza");
 
+        String^ sql = "SELECT * FROM drinks";
+        SQLiteCommand^ command = gcnew SQLiteCommand(sql, % connection);
+        SQLiteDataReader^ reader = command->ExecuteReader();
 
-    // przykład obsługi wyjątku
-	machine.makeCoffee("CocaCola");
+        while (reader->Read())
+        {
+            // Pobieramy wartość i rzutujemy na String^
+            Console::WriteLine(reader["name"]->ToString());
+        }
 
-
-    // Dodawanie własnego napoju
-	Tdrinks::addDrink("Flat White", 150, 50, 3);
-	machine.makeCoffee("Flat White");
-    machine.printStatus();
-
-    for (int i = 0; i < 3; i++) {
-        machine.makeCoffee("Latte");
-        machine.printStatus();
+        reader->Close();
     }
-
-	// uzupełnianie składników
-	machine.addWater(500);
-	machine.addBeans(200);
-	machine.addMilk(300);
-	machine.printStatus();
-
-	// Obsluga wyjatku -> dodanie zbyt duzej ilosci wody
-	machine.addWater(3000); // poziom wody jest uzupełniany do maksymalnej pojemności
-	machine.printStatus();
-
-
-	// czyszczenie maszyny
-	machine.cleanMachine();
-	machine.printStatus();
-
-
-
-	machine.printHistory();
-
-
-
-
-
-	std::cout << "\n\n\n";
-	// Prezentacja logiki klasy Tdrinks
-	Tdrinks drink("espresso", 30, 0, 3);
-
-	std::cout << "Funkcja Tdrinks::show()" << std::endl;
-	drink.show();
-	drink.editPower(5);
-	drink.editVolume(50);
-	drink.editVolumeOfMilk(10);
-	std::cout << "Po edycji:" << std::endl;
-	drink.show();
-
-
-
+    catch (Exception^ ex)
+    {
+        Console::WriteLine("Wystapil blad: " + ex->Message);
+    }
     std::cin.get();
     return 0;
 }

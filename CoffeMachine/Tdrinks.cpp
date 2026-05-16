@@ -3,7 +3,7 @@
 #include <vector>
 #include "Tdrinks.h"
 using namespace std;
-
+//string connectionString = "Data Source=mojaBaza.db;Version=3;";
 // Constructor to initialize the name and volume of the drink
 Tdrinks::Tdrinks(string name, float volume, float volumeofMilk, int power)
 {

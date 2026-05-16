@@ -2,8 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
-
+using namespace System::Data::SQLite;
 // Czym jest kawa?
 /* 
 Historia kawy rozpoczęła się w Etiopii (rejon Kaffa), gdzie według legendy pobudzające właściwości owoców kawowca odkrył pasterz,
