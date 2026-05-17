@@ -12,6 +12,16 @@ Tdrinks::Tdrinks(string name, float volume, float volumeofMilk, int power)
 	this->volumeOfMilk = volumeofMilk;
 	this->power = power;
 }
+Tdrinks::Tdrinks(const Tdrinks& other) {
+	for (auto& drink : drinks) {
+		if (drink.getName() == other.getName()) {
+			this->name = other.getName() + "_copy" + std::to_string(floor(rand() % 1000));
+		}
+	}
+	this->volume = other.getVolumeOfWater();
+	this->volumeOfMilk = other.getVolumeOfMilk();
+	this->power = other.getPowerOfCoffe();
+}
 int Tdrinks::getDrinkId(string name)
 {
 	int count = drinks.size();
@@ -37,26 +47,26 @@ int Tdrinks::getDrinkId(string name)
 
 
 // Returns the name of the drink
-std::string Tdrinks::getName()
+std::string Tdrinks::getName() const
 {
 	return name;
 }
 // Returns the volume of the drink
-float Tdrinks::getVolume()
+float Tdrinks::getVolume() const
 {
 	return volume + volumeOfMilk;
 }
-float Tdrinks::getVolumeOfWater()
+float Tdrinks::getVolumeOfWater() const
 {
 	return volume;
 }
-float Tdrinks::getVolumeOfMilk()
+float Tdrinks::getVolumeOfMilk() const
 {
 	return volumeOfMilk;
 }
 
 
-int Tdrinks::getPowerOfCoffe()
+int Tdrinks::getPowerOfCoffe() const
 {
 	return power;
 }
@@ -126,14 +136,19 @@ int Tdrinks::getAmountOfCoffee() {
 	return int(AmountPerVolume * volume);
 }
 
-// List of drinks with their names and volumes
-// (nazwa, iloœæ wody, iloœæ mleka, moc)
-std::vector<Tdrinks> Tdrinks::drinks = {
-	Tdrinks("Black Coffee", 250, 0, 4),
-	Tdrinks("Latte", 200, 100, 2),
-	Tdrinks("Cappuccino", 100, 250, 3),
-	Tdrinks("Espresso", 100, 0, 5)
-};
+
+void Tdrinks::copyDrink(std::string name) {
+	for (auto& drink : drinks) {
+		if (drink.getName() != name) {
+			cout << "Nie znaleziono napoju o nazwie: \"" << name << "\"!\n";
+		}
+		else {
+			drinks.push_back(Tdrinks(drink));
+			cout << "Napój \"" << name << "\" zosta³ skopiowany jako \"" << drinks.back().getName() << "\"\n";
+			return;
+		}
+	}
+}
 
 
 // funkcja do znajdywania napoju po nazwie
@@ -143,5 +158,14 @@ Tdrinks* Tdrinks::getDrinkByName(std::string name) {
 			return &drink;
 		}
 	}
-	return nullptr;  
+	return nullptr;
 }
+
+	// List of drinks with their names and volumes
+// (nazwa, iloœæ wody, iloœæ mleka, moc)
+std::vector<Tdrinks> Tdrinks::drinks = {
+	Tdrinks("Black Coffee", 250, 0, 4),
+	Tdrinks("Latte", 200, 100, 2),
+	Tdrinks("Cappuccino", 100, 250, 3),
+	Tdrinks("Espresso", 100, 0, 5)
+};

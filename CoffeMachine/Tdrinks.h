@@ -20,17 +20,20 @@ class Tdrinks
 	int power;  // Power = (1,2,3,4,5) default = 3
 	
 	
+	
 public:
 	
 	static std::vector<Tdrinks> drinks;
 	Tdrinks(std::string name, float volume, float volumeofMilk, int power);
-	std::string getName();
+	Tdrinks(const Tdrinks& other);
+
+	std::string getName() const;
 	int Tdrinks::getDrinkId(std::string name);
-	int getPowerOfCoffe();
-	bool hasMilk();
-	float getVolume();
-	float getVolumeOfMilk();
-	float Tdrinks::getVolumeOfWater();
+	int getPowerOfCoffe() const;
+	bool hasMilk() const;
+	float getVolume() const;
+	float getVolumeOfMilk() const;
+	float getVolumeOfWater() const;
 	void show();
 	int getAmountOfCoffee();
 
@@ -40,6 +43,8 @@ public:
 
 	static void addDrink(std::string name, float volume, float volumeOfMilk, int power);
 	static void removeDrink(std::string name);
+
+	void copyDrink(std::string name);
 
 	static Tdrinks* getDrinkByName(std::string name);
 

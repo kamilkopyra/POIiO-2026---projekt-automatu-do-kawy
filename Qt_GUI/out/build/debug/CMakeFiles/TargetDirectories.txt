@@ -1,0 +1,5 @@
+C:/Users/user/source/repos/POIiO-2026_KamilKopyra_FilipMaterowski_JakubKiraga_projekt/Qt_GUI/out/build/debug/CMakeFiles/Qt_GUI.dir
+C:/Users/user/source/repos/POIiO-2026_KamilKopyra_FilipMaterowski_JakubKiraga_projekt/Qt_GUI/out/build/debug/CMakeFiles/edit_cache.dir
+C:/Users/user/source/repos/POIiO-2026_KamilKopyra_FilipMaterowski_JakubKiraga_projekt/Qt_GUI/out/build/debug/CMakeFiles/rebuild_cache.dir
+C:/Users/user/source/repos/POIiO-2026_KamilKopyra_FilipMaterowski_JakubKiraga_projekt/Qt_GUI/out/build/debug/CMakeFiles/Qt_GUI_autogen_timestamp_deps.dir
+C:/Users/user/source/repos/POIiO-2026_KamilKopyra_FilipMaterowski_JakubKiraga_projekt/Qt_GUI/out/build/debug/CMakeFiles/Qt_GUI_autogen.dir
