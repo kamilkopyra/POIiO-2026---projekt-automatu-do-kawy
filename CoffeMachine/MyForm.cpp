@@ -84,6 +84,9 @@ int main(array<String^>^ args) {
 	std::cout << "==== Wszystkie napoje ====" << std::endl;
 	Tdrinks::showAll();
 
+	Tdrinks::copyDrink("Latte"); // kopiowanie napoju
+	Tdrinks::showAll();
+
 	
 
 	std::cin.get();
