@@ -1,15 +1,13 @@
-#include "MainWindow.h"
+#include "Tdrinks.h"
+#include "CoffeMachine.h"
+#include "Ingredient.h"
 
-using namespace System;
-using namespace System::Windows::Forms;
+#include <iostream>
+#include <string>
+#include <vector>
 
-[STAThreadAttribute]
-
-int main(array<String^>^ args) {
-    //Application::EnableVisualStyles();
-    //Application::SetCompatibleTextRenderingDefault(false);
-    //MyForm form;
-    //Application::Run(% form);
+int main() {
+    
 
 	std::cout << "Terminalowa wersja testowa\n\n";
 

@@ -22,7 +22,6 @@ class Tdrinks
 	
 public:
 	
-	static std::vector<Tdrinks> drinks;
 	Tdrinks(std::string name, float volume, float volumeofMilk, int power);
 	Tdrinks(const Tdrinks& other);
 	~Tdrinks()=default;
@@ -49,6 +48,10 @@ public:
 	static Tdrinks* getDrinkByName(std::string name);
 
 };
+
+// Declaration of the global drinks vector used across the module.
+// It is defined in Tdrinks.cpp
+extern std::vector<Tdrinks*> drinks;
 
 
 
